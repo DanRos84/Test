@@ -1,0 +1,71 @@
+﻿@model MVCApplicationTest.Models.mvcUserModel
+@{
+    ViewBag.Title = "AddOrEdit";
+}
+
+<h2>Add Or Edit</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>to Users List</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.UsersID)
+
+        <div class="from-group">
+            @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                <hr />
+            </div>
+        </div>
+
+        <div class="from-group">
+            @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                <hr />
+            </div>
+        </div>
+
+        <div class="from-group">
+            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                <hr />
+            </div>
+        </div>
+
+        <div class="from-group">
+            @Html.LabelFor(model => model.Mobile, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Mobile, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Mobile, "", new { @class = "text-danger" })
+                <hr />
+            </div>
+        </div>
+
+        <div class="from-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Submit" class="btn button" />
+                <input type="reset" value="Reset" class="btn button" />
+                <hr />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    <hr />
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval");
+}
